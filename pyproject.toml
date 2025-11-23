@@ -12,6 +12,8 @@ dependencies = [
     "networkx>=3.5",
     # Better classes and validation.
     "pydantic>=2.12.4",
+    # Numerical computing.
+    "numpy>=2.3.5",
 ]
 
 [dependency-groups]
@@ -21,6 +23,8 @@ dev = [
     "mypy>=1.18.2",
     #
     "types-networkx>=3.5.0.20251106",
+    "matplotlib-stubs>=0.3.11",
+    # "microsoft-python-type-stubs",
     # [typing]-[END]
     #
     # [testing]-[BEGIN]
@@ -36,6 +40,9 @@ dev = [
     # Code complexity checker
     "radon>=6.0.1",
 ]
+
+# [tool.uv.sources]
+# microsoft-python-type-stubs = { git = "https://github.com/microsoft/python-type-stubs.git" }
 
 #[project.scripts]
 #py-algorithms = "py_algorithms:main"
