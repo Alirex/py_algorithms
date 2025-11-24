@@ -1,15 +1,9 @@
-from typing import TYPE_CHECKING, Any, Protocol
+from typing import TYPE_CHECKING
 
-from pydantic import BaseModel
+from py_algorithms.sort_shared import Some, Sortable
 
 if TYPE_CHECKING:
     from collections.abc import MutableSequence
-
-
-class Sortable(Protocol):
-    def __lt__(self, other: Any) -> bool: ...  # noqa: ANN401
-
-    def __gt__(self, other: Any) -> bool: ...  # noqa: ANN401
 
 
 def bubble_sort[T: Sortable](lst: MutableSequence[T]) -> None:
@@ -18,17 +12,6 @@ def bubble_sort[T: Sortable](lst: MutableSequence[T]) -> None:
         for j in range(n - i - 1):
             if lst[j] > lst[j + 1]:
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
-
-
-class Some(BaseModel):
-    value: int
-
-    def __lt__(self, other: Any) -> bool:  # noqa: ANN401
-        return self.value < other.value if isinstance(other, Some) else NotImplemented
-
-    #
-    def __gt__(self, other: Any) -> bool:  # noqa: ANN401
-        return self.value > other.value if isinstance(other, Some) else NotImplemented
 
 
 def main() -> None:
