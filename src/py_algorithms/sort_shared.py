@@ -8,6 +8,9 @@ class Sortable(Protocol):
 
     def __gt__(self, other: Any) -> bool: ...  # noqa: ANN401
 
+    def __le__(self, other: Any) -> bool: ...  # noqa: ANN401
+    def __ge__(self, other: Any) -> bool: ...  # noqa: ANN401
+
 
 class Some(BaseModel):
     value: int
@@ -18,3 +21,9 @@ class Some(BaseModel):
     #
     def __gt__(self, other: Any) -> bool:  # noqa: ANN401
         return self.value > other.value if isinstance(other, Some) else NotImplemented
+
+    def __le__(self, other: Any) -> bool:  # noqa: ANN401
+        return self.value <= other.value if isinstance(other, Some) else NotImplemented
+
+    def __ge__(self, other: Any) -> bool:  # noqa: ANN401
+        return self.value >= other.value if isinstance(other, Some) else NotImplemented
