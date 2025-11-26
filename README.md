@@ -45,6 +45,8 @@ fi
 prek --version
 ```
 
+Note: Run with self-update for installing the latest version of prek. Maybe they will provide a better script later.
+
 ### Clone the repository
 
 Make this if you haven't done it yet.
