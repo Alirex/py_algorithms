@@ -49,7 +49,7 @@ dev = [
 
 [tool.poe.tasks]
 pca= [
-    {cmd = "pre-commit run --all-files"},
+    {cmd = "prek run --all-files"},
 ]
 
 # Run with: poe metrics or uv run poe metrics
