@@ -6,7 +6,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.11
+    rev: 0.9.12
     hooks:
       - id: uv-lock
 
@@ -74,9 +74,9 @@ repos:
         entry: uv run basedpyright
         language: system
         types: [python]
-        pass_filenames: false
-        # hook will execute using a single process instead of in parallel
-        require_serial: true
+        #        pass_filenames: false
+        #        # hook will execute using a single process instead of in parallel
+        #        require_serial: true
 
       - id: mypy
         # Static type checker for Python.
@@ -84,5 +84,5 @@ repos:
         entry: uv run mypy
         language: system
         types: [python]
-        # hook will execute using a single process instead of in parallel
-        require_serial: true
+        #        # hook will execute using a single process instead of in parallel
+        #        require_serial: true
