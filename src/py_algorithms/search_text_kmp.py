@@ -2,9 +2,8 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from py_algorithms.search_shared import PositionOrMinusOne
+    from py_algorithms.search_text_shared import TextPattern
 
-type TextPattern = str
-"""Text pattern type"""
 
 type LPSArray = list[int]
 """Longest Prefix Suffix array type"""
