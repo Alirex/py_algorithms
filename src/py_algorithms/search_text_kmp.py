@@ -35,19 +35,20 @@ def kmp_search(main_string: str, pattern: TextPattern) -> PositionOrMinusOne:
 
     lps = compute_lps(pattern)
 
-    i = j = 0
+    text_index = 0
+    pattern_index = 0
 
-    while i < text_len:
-        if pattern[j] == main_string[i]:
-            i += 1
-            j += 1
-        elif j != 0:
-            j = lps[j - 1]
+    while text_index < text_len:
+        if pattern[pattern_index] == main_string[text_index]:
+            text_index += 1
+            pattern_index += 1
+        elif pattern_index != 0:
+            pattern_index = lps[pattern_index - 1]
         else:
-            i += 1
+            text_index += 1
 
-        if j == pattern_len:
-            return i - j
+        if pattern_index == pattern_len:
+            return text_index - pattern_index
 
     return -1  # Pattern not found
 
