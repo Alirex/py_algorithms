@@ -1,23 +1,23 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from py_algorithms.sort_shared import Some, Sortable
+from py_algorithms.sort_shared import Comparable, Some
 
 if TYPE_CHECKING:
     from collections.abc import MutableSequence
 
 
-def bubble_sort[T: Sortable](lst: MutableSequence[T]) -> None:
-    n = len(lst)
+def bubble_sort[T: Comparable[Any]](arr: MutableSequence[T]) -> None:
+    n = len(arr)
     for i in range(n - 1):
         for j in range(n - i - 1):
-            if lst[j] > lst[j + 1]:
-                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
 
 
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    bubble_sort(numbers)  # pyright: ignore[reportArgumentType]
+    bubble_sort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101

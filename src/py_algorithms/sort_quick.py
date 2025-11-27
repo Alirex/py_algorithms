@@ -1,7 +1,9 @@
-from py_algorithms.sort_shared import Some, Sortable
+from typing import Any
+
+from py_algorithms.sort_shared import Comparable, Some
 
 
-def quicksort[T: Sortable](arr: list[T]) -> list[T]:
+def quicksort[T: Comparable[Any]](arr: list[T]) -> list[T]:
     if len(arr) <= 1:
         return arr
     pivot = arr[len(arr) // 2]
@@ -14,7 +16,7 @@ def quicksort[T: Sortable](arr: list[T]) -> list[T]:
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    quicksort(numbers)  # pyright: ignore[reportArgumentType]
+    quicksort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101

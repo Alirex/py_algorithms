@@ -1,12 +1,12 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from py_algorithms.sort_shared import Some, Sortable
+from py_algorithms.sort_shared import Comparable, Some
 
 if TYPE_CHECKING:
     from collections.abc import MutableSequence
 
 
-def selection_sort[T: Sortable](arr: MutableSequence[T]) -> None:
+def selection_sort[T: Comparable[Any]](arr: MutableSequence[T]) -> None:
     n = len(arr)
     for i in range(n):
         min_idx = i
@@ -19,7 +19,7 @@ def selection_sort[T: Sortable](arr: MutableSequence[T]) -> None:
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    selection_sort(numbers)  # pyright: ignore[reportArgumentType]
+    selection_sort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101

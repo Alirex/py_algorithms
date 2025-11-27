@@ -1,9 +1,14 @@
-from py_algorithms.sort_shared import Some, Sortable
+from typing import TYPE_CHECKING, Any
+
+from py_algorithms.sort_shared import Comparable, Some
+
+if TYPE_CHECKING:
+    from collections.abc import MutableSequence
 
 
-def shell_sort[T: Sortable](arr: list[T]) -> list[T]:
-    n = len(arr)
-    gap = n // 2
+def shell_sort[T: Comparable[Any]](arr: MutableSequence[T]) -> MutableSequence[T]:
+    n: int = len(arr)
+    gap: int = n // 2
 
     while gap > 0:
         for i in range(gap, n):
@@ -21,7 +26,7 @@ def shell_sort[T: Sortable](arr: list[T]) -> list[T]:
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    shell_sort(numbers)  # pyright: ignore[reportArgumentType]
+    shell_sort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101
