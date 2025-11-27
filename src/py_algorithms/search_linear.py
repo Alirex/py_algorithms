@@ -16,7 +16,8 @@ def linear_search[T: Comparable[Any]](arr: Sequence[T], x: T) -> PositionOrMinus
 
 
 def exists_in_list[T: Comparable[Any]](arr: list[T], x: T) -> bool:
-    return linear_search(arr, x) != -1
+    # return linear_search(arr, x) != -1
+    return bool(~linear_search(arr, x))
 
 
 def main() -> None:
