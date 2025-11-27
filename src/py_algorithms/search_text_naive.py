@@ -2,9 +2,10 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from py_algorithms.search_shared import PositionOrMinusOne
+    from py_algorithms.search_text_shared import TextPattern
 
 
-def naive_search(main_string: str, pattern: str) -> PositionOrMinusOne:
+def naive_search(main_string: str, pattern: TextPattern) -> PositionOrMinusOne:
     pattern_len = len(pattern)
     source_len = len(main_string)
 
