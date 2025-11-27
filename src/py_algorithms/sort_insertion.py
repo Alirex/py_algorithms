@@ -1,25 +1,25 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from py_algorithms.sort_shared import Some, Sortable
+from py_algorithms.sort_shared import Comparable, Some
 
 if TYPE_CHECKING:
     from collections.abc import MutableSequence
 
 
-def insertion_sort[T: Sortable](lst: MutableSequence[T]) -> None:
-    for i in range(1, len(lst)):
-        key = lst[i]
+def insertion_sort[T: Comparable[Any]](arr: MutableSequence[T]) -> None:
+    for i in range(1, len(arr)):
+        key = arr[i]
         j = i - 1
-        while j >= 0 and key < lst[j]:
-            lst[j + 1] = lst[j]
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
             j -= 1
-        lst[j + 1] = key
+        arr[j + 1] = key
 
 
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    insertion_sort(numbers)  # pyright: ignore[reportArgumentType]
+    insertion_sort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101

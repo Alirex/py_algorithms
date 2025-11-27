@@ -1,7 +1,9 @@
-from py_algorithms.sort_shared import Some, Sortable
+from typing import Any
+
+from py_algorithms.sort_shared import Comparable, Some
 
 
-def merge_sort[T: Sortable](arr: list[T]) -> list[T]:
+def merge_sort[T: Comparable[Any]](arr: list[T]) -> list[T]:
     if len(arr) <= 1:
         return arr
 
@@ -12,7 +14,7 @@ def merge_sort[T: Sortable](arr: list[T]) -> list[T]:
     return merge(merge_sort(left_half), merge_sort(right_half))
 
 
-def merge[T: Sortable](left: list[T], right: list[T]) -> list[T]:
+def merge[T: Comparable[Any]](left: list[T], right: list[T]) -> list[T]:
     merged: list[T] = []
     left_index = 0
     right_index = 0
@@ -42,7 +44,7 @@ def merge[T: Sortable](left: list[T], right: list[T]) -> list[T]:
 def main() -> None:
     numbers = [5, 3, 8, 4, 2]
 
-    merge_sort(numbers)  # pyright: ignore[reportArgumentType]
+    merge_sort(numbers)
 
     # noinspection Assert
     assert numbers == [2, 3, 4, 5, 8]  # noqa: S101
