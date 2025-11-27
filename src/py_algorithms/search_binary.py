@@ -16,11 +16,11 @@ def binary_search[T: Comparable[Any]](arr: Sequence[T], x: T) -> PositionOrMinus
     while low <= high:
         mid = (high + low) // 2
 
-        # If x is greater, than value at mid, ignore left half
+        # If x is greater, than value at mid, ignore the left half
         if arr[mid] < x:
             low = mid + 1
 
-        # If x is smaller, than value at mid, ignore right half
+        # If x is smaller, than value at mid, ignore the right half
         elif arr[mid] > x:
             high = mid - 1
 
@@ -28,7 +28,7 @@ def binary_search[T: Comparable[Any]](arr: Sequence[T], x: T) -> PositionOrMinus
         else:
             return mid
 
-    # If element is not found
+    # If the element is not found
     return -1
 
 
