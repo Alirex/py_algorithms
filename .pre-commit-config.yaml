@@ -74,7 +74,7 @@ repos:
         entry: uv run basedpyright
         language: system
         types: [python]
-        #        pass_filenames: false
+        pass_filenames: false
         #        # hook will execute using a single process instead of in parallel
         #        require_serial: true
 
