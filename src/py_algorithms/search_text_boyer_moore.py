@@ -5,22 +5,23 @@ if TYPE_CHECKING:
     from py_algorithms.search_text_shared import TextPattern
 
 type CharacterFromPattern = str
-"""Character from pattern type"""
+"""Character from pattern."""
 
-type OffsetByCharacter = int
-"""Offset by character type"""
+type OffsetIfMismatch = int
+"""Offset by character.
 
-type ShiftTable = dict[CharacterFromPattern, OffsetByCharacter]
+Number of characters to shift when a mismatch occurs.
+"""
+
+type ShiftTable = dict[CharacterFromPattern, OffsetIfMismatch]
 """Shift table type for Boyer-Moore algorithm"""
 
 
 def build_shift_table(pattern: TextPattern) -> ShiftTable:
     """Create a shift table for the Boyer-Moore algorithm."""
-    table: ShiftTable = {}
     length = len(pattern)
-    # For each character in the substring, we set an offset equal to the length of the substring
-    for index, char in enumerate(pattern[:-1]):
-        table[char] = length - index - 1
+
+    table: ShiftTable = {char: length - index - 1 for index, char in enumerate(pattern[:-1])}
     # If the character is not in the table, the offset will be equal to the length of the substring
     table.setdefault(pattern[-1], length)
     return table
@@ -29,7 +30,6 @@ def build_shift_table(pattern: TextPattern) -> ShiftTable:
 def boyer_moore_search(text: str, pattern: TextPattern) -> PositionOrMinusOne:
     # Create a shift table for the pattern (substring)
     shift_table = build_shift_table(pattern)
-    print(f"Shift Table: {shift_table}")
 
     i = 0  # Initialize the starting index for the main text
 
