@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING, Any
 
-from py_algorithms.sort_shared import Comparable
+from py_algorithms.sort.sort_shared import Comparable
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-    from py_algorithms.search_shared import PositionOrMinusOne
+    from py_algorithms.search.search_shared import PositionOrMinusOne
 
 
 def linear_search[T: Comparable[Any]](arr: Sequence[T], x: T) -> PositionOrMinusOne:

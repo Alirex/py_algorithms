@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from py_algorithms.search_shared import PositionOrMinusOne
-    from py_algorithms.search_text_shared import TextPattern
+    from py_algorithms.search.search_shared import PositionOrMinusOne
+    from py_algorithms.search.search_text_shared import TextPattern
 
 type CharacterFromPattern = str
 """Character from pattern."""
