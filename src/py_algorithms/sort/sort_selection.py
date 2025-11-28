@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, Any
 
-from py_algorithms.sort_shared import Comparable, Some
+from py_algorithms.sort.sort_shared import Comparable, Some
 
 if TYPE_CHECKING:
     from collections.abc import MutableSequence

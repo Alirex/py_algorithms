@@ -1,6 +1,6 @@
 from typing import Any
 
-from py_algorithms.sort_shared import Comparable, Some
+from py_algorithms.sort.sort_shared import Comparable, Some
 
 
 def quicksort[T: Comparable[Any]](arr: list[T]) -> list[T]:
