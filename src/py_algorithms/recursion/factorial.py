@@ -1,7 +1,9 @@
 def factorial(n: int) -> int:
-    if n == 1:
-        return 1
-    return n * factorial(n - 1)
+    return 1 if n == 1 else n * factorial(n - 1)
+
+
+def factorial_with_acc(n: int, acc: int = 1) -> int:
+    return acc if n == 1 else factorial_with_acc(n - 1, n * acc)
 
 
 def main() -> None:
