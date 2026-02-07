@@ -6,69 +6,56 @@ readme = "README.md"
 authors = [
     { name = "alirex", email = "alirex.prime@gmail.com" }
 ]
-requires-python = ">=3.14.0"
+requires-python = ">=3.14.3"
 dependencies = [
-    "matplotlib>=3.10.7",
-    "networkx>=3.5",
+    "matplotlib>=3.10.8",
+    "networkx>=3.6.1",
     # Better classes and validation.
-    "pydantic>=2.12.4",
+    "pydantic>=2.12.5",
     # Numerical computing.
-    "numpy>=2.3.5",
+    "numpy>=2.4.2",
 ]
 
 [dependency-groups]
 dev = [
     # [typing]-[BEGIN]
     # Static type checker
-    "mypy>=1.18.2",
+    "mypy>=1.19.1",
     #
-    "types-networkx>=3.5.0.20251106",
+    "types-networkx>=3.6.1.20251220",
     "matplotlib-stubs>=0.3.11",
-    # "microsoft-python-type-stubs",
     # [typing]-[END]
+    #
+    # [task]-[BEGIN]
+    # Task runner
+    "rust-just>=1.46.0",
+    # [task]-[END]
     #
     # [testing]-[BEGIN]
     # Tests.
-    "pytest>=9.0.1",
+    "pytest>=9.0.2",
     # [testing]-[END]
-    # Extra checker. Used by Zed.
-    "basedpyright>=1.34.0",
-    # Task runner
-    "poethepoet>=0.37.0",
+    #
+    # [linting]-[BEGIN]
+    # Pre-commit runner
+    "prek>=0.3.2",
+    # Main linter/formatter
+    "ruff>=0.15.0",
+    # Extra checker. Used by Zed. Also check "match/case exhaustiveness".
+    "basedpyright>=1.37.4",
+    # [linting]-[END]
+    #
+    # [extra_code_quality]-[BEGIN]
     # Dead code checker
     "vulture>=2.14",
     # Code complexity checker
     "radon>=6.0.1",
+    # [extra_code_quality]-[END]
 ]
 
-# [tool.uv.sources]
-# microsoft-python-type-stubs = { git = "https://github.com/microsoft/python-type-stubs.git" }
 
 #[project.scripts]
 #py-algorithms = "py_algorithms:main"
-
-[tool.poe.tasks]
-pca= [
-    {cmd = "prek run --all-files"},
-]
-
-# Run with: poe metrics or uv run poe metrics
-# Check code quality: dead code, complexity, and maintainability
-metrics = [
-    {cmd = "vulture . --min-confidence 80 --exclude .venv,build,dist,docs,scripts,tests"},
-    {cmd = "radon cc . -a -nb"},
-    {cmd = "radon mi . -nb"}
-]
-
-# Run with: poe quality or uv run poe quality
-# Full quality check: format, lint, type check, and metrics
-quality = [
-    {cmd = "ruff format ."},
-    {cmd = "ruff check . --fix"},
-    {cmd = "basedpyright --level error"},
-    {cmd = "vulture . --min-confidence 80 --exclude .venv,build,dist,docs,scripts,tests"},
-    {cmd = "radon cc . -a -nb"}
-]
 
 [build-system]
 requires = ["uv_build>=0.9.10,<0.10.0"]
@@ -83,12 +70,6 @@ plugins = [
 ]
 
 strict = true
-# follow_imports = "silent"
-# warn_redundant_casts = true
-# warn_unused_ignores = true
-# disallow_any_generics = true
-# no_implicit_reexport = true
-# disallow_untyped_defs = true
 
 [tool.pydantic-mypy]
 init_forbid_extra = true
@@ -103,10 +84,6 @@ show-fixes = true
 extend-exclude = [
 ]
 
-# [tool.ruff.lint.isort]
-# # known-first-party = ["your_package_name"]  # CHANGE THIS
-# combine-as-imports = true
-# force-sort-within-sections = true
 
 [tool.ruff.format]
 quote-style = "double"
@@ -187,4 +164,22 @@ runtime-evaluated-decorators = [
 ]
 
 [tool.basedpyright]
-typeCheckingMode = "strict"
+# Rules: Use all in "error" level.
+#   Please change non-critical rules to "warning" or disable them explicitly below.
+typeCheckingMode = "all"
+
+# [disable_explicit]-[BEGIN]
+# We don't need this.
+reportImplicitStringConcatenation = false
+# [disable_explicit]-[END]
+
+# [temporarily_lower_the_level]-[BEGIN]
+# Temporarily lower the level of some rules to "warning" to reduce noise.
+
+# `Any` usage reporting.
+reportAny = "warning" # Hard to control for now.
+reportExplicitAny = true # But keep this enabled.
+
+reportUnannotatedClassAttribute = "warning" # Maybe don't need it now.
+reportUnsafeMultipleInheritance = "warning" # Hard to control for now.
+# [temporarily_lower_the_level]-[END]
