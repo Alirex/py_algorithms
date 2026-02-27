@@ -75,8 +75,8 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
-        #        # hook will execute using a single process instead of in parallel
-        #        require_serial: true
+        # hook will execute using a single process instead of in parallel
+        require_serial: true
 
       - id: mypy
         # Static type checker for Python.
@@ -84,5 +84,5 @@ repos:
         entry: uv run mypy
         language: system
         types: [python]
-        #        # hook will execute using a single process instead of in parallel
-        #        require_serial: true
+        # hook will execute using a single process instead of in parallel
+        require_serial: true

@@ -14,6 +14,8 @@ dependencies = [
     "pydantic>=2.12.5",
     # Numerical computing.
     "numpy>=2.4.2",
+    # Scientific computing.
+    "scipy>=1.17.0",
 ]
 
 [dependency-groups]
@@ -166,20 +168,21 @@ runtime-evaluated-decorators = [
 [tool.basedpyright]
 # Rules: Use all in "error" level.
 #   Please change non-critical rules to "warning" or disable them explicitly below.
-typeCheckingMode = "all"
+#typeCheckingMode = "all"
+typeCheckingMode = "strict"
 
-# [disable_explicit]-[BEGIN]
-# We don't need this.
-reportImplicitStringConcatenation = false
-# [disable_explicit]-[END]
-
-# [temporarily_lower_the_level]-[BEGIN]
-# Temporarily lower the level of some rules to "warning" to reduce noise.
-
-# `Any` usage reporting.
-reportAny = "warning" # Hard to control for now.
-reportExplicitAny = true # But keep this enabled.
-
-reportUnannotatedClassAttribute = "warning" # Maybe don't need it now.
-reportUnsafeMultipleInheritance = "warning" # Hard to control for now.
-# [temporarily_lower_the_level]-[END]
+## [disable_explicit]-[BEGIN]
+## We don't need this.
+#reportImplicitStringConcatenation = false
+## [disable_explicit]-[END]
+#
+## [temporarily_lower_the_level]-[BEGIN]
+## Temporarily lower the level of some rules to "warning" to reduce noise.
+#
+## `Any` usage reporting.
+#reportAny = "warning" # Hard to control for now.
+#reportExplicitAny = true # But keep this enabled.
+#
+#reportUnannotatedClassAttribute = "warning" # Maybe don't need it now.
+#reportUnsafeMultipleInheritance = "warning" # Hard to control for now.
+## [temporarily_lower_the_level]-[END]
