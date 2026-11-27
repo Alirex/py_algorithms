@@ -35,7 +35,7 @@ dev = [
     #
     # [testing]-[BEGIN]
     # Tests.
-    "pytest>=9.0.2",
+    "pytest>=9.0.3",
     # [testing]-[END]
     #
     # [linting]-[BEGIN]
